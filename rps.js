@@ -25,32 +25,46 @@ function getPlayerChoice() {
 }
 
 
-
 // Play round
 function playRound(playerSelection, computerSelection) {
+    let winner;
     switch(true) {
         case (playerSelection === computerSelection):
-            return ("It's a tie!");
+            console.log("It's a tie!");
+            break;
         case (
-            playerSelection === 'Rock' && computerSelection === 'Scissors'
-            || playerSelection === 'Scissors' && computerSelection === 'Paper' ||
+            playerSelection === 'Rock' && computerSelection === 'Scissors' || 
+            playerSelection === 'Scissors' && computerSelection === 'Paper' ||
             playerSelection === 'Paper' && computerSelection === 'Rock'
             ):
-            return `You win! ${playerSelection} beats ${computerSelection}.`;
+            winner = 'player';
+            console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
+            break;
         default:
-            return `You lose!  ${computerSelection} beats ${playerSelection}.`;
+            winner = 'computer';
+            console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
     }
+    return winner;
 }
+
 
 // Play game (5 rounds)
 function playGame() {
-    // code
-    // for (let i = 0; i < 5; i++)
-    let winner = playRound(getPlayerChoice(), getComputerChoice());
-    alert(winner);
-    console.log(winner);
-    // keep score
-    // return winner
+    let playerScore = 0;
+    let computerScore = 0;
+    let tie = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let playerChoice = getPlayerChoice();
+        let computerChoice = getComputerChoice();
+        let winner = playRound(playerChoice, computerChoice);
+
+        // Keep score
+        winner === 'player' ? playerScore++ : winner === 'computer' ? computerScore++ : tie++;
+        console.log(`Player: ${playerScore}, Computer: ${computerScore}, Tie: ${tie}`);
+    }
+    // Announce winner
+    console.log(playerScore === computerScore ? 'Tie!' : playerScore > computerScore ? 'Player wins!' : 'Computer wins!');
 }
 
 playGame();
