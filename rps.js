@@ -6,8 +6,9 @@ console.log(choices);
 function toTitleCase(str) {
     if (str) {
         return str[0].toUpperCase() + str.substring(1).toLowerCase();
+    } else {
+        return str;
     }
-    return;
 } 
 
 
@@ -20,8 +21,8 @@ function getComputerChoice() {
 // Get player's choice
 function getPlayerChoice() {
     // get input only if valid & convert to lowercase
-    let choice = '';
-    while (choice !== undefined && !choices.includes(choice)) {
+    let choice;
+    while (choice !== null && !choices.includes(choice)) {
         choice = toTitleCase(prompt("Rock, paper, scissors? "));
     }
     return choice;
@@ -61,7 +62,7 @@ function playGame() {
     for (let i = 0; i < 5; i++) {
         let computerChoice = getComputerChoice();
         let playerChoice = getPlayerChoice();
-        if (playerChoice === undefined) {
+        if (playerChoice === null) {
             cancel = 1;
             break;
         }
