@@ -7,11 +7,18 @@ function getComputerChoice() {
 }
 console.log(getComputerChoice());
 
+
 // Get player's choice
 function getPlayerChoice() {
-    // get input
-    // return choice
+    // get input only if valid & convert to lowercase
+    let choice;
+    while (!choices.includes(choice)) {
+        choice = prompt("Rock, paper, scissors? ").toLowerCase();
+    }
+    return choice;
 }
+console.log("Player: " + getPlayerChoice());
+
 
 // Play round
 function playRound(playerSelection, computerSelection) {
