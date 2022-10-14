@@ -2,9 +2,12 @@ const choices = ['Rock', 'Paper', 'Scissors'];
 console.log(choices);
 
 
-// Convert string to title case
+// Convert string to title case.
 function toTitleCase(str) {
-    return str[0].toUpperCase() + str.substring(1).toLowerCase();
+    if (str) {
+        return str[0].toUpperCase() + str.substring(1).toLowerCase();
+    }
+    return;
 } 
 
 
@@ -17,8 +20,8 @@ function getComputerChoice() {
 // Get player's choice
 function getPlayerChoice() {
     // get input only if valid & convert to lowercase
-    let choice;
-    while (!choices.includes(choice)) {
+    let choice = '';
+    while (choice !== undefined && !choices.includes(choice)) {
         choice = toTitleCase(prompt("Rock, paper, scissors? "));
     }
     return choice;
@@ -53,10 +56,15 @@ function playGame() {
     let playerScore = 0;
     let computerScore = 0;
     let tie = 0;
+    let cancel = 0;
 
     for (let i = 0; i < 5; i++) {
-        let playerChoice = getPlayerChoice();
         let computerChoice = getComputerChoice();
+        let playerChoice = getPlayerChoice();
+        if (playerChoice === undefined) {
+            cancel = 1;
+            break;
+        }
         let winner = playRound(playerChoice, computerChoice);
 
         // Keep score
@@ -64,8 +72,11 @@ function playGame() {
         console.log(`Player: ${playerScore}, Computer: ${computerScore}, Tie: ${tie}`);
     }
     // Announce winner
-    console.log(playerScore === computerScore ? 'Tie!' : playerScore > computerScore ? 'Player wins!' : 'Computer wins!');
+    if (cancel === 0) {
+        console.log(playerScore === computerScore ? 'Tie!' : playerScore > computerScore ? 'Player wins!' : 'Computer wins!');
+    } else {
+        console.log('The game was canceled.');
+    }
 }
-
 playGame();
 
