@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
+}
+
+button {
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 1.6rem;
+    font-weight: 900;
+    padding: 10px 0px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-family: 'Rammetto One', sans-serif;
+    font-size: 3.0rem;
+    font-weight: 900;
+    text-align: center;
+    background: white;
+    color: rgba(200, 255, 0, 0.822);
+    text-shadow: 9px 0px rgba(225, 0, 255, 0.575);
+    /* color: rgba(0, 0, 255, 0.767);
+    text-shadow: 12px 0px rgba(255, 72, 0, 0.548); */
+    /* color: rgba(200, 255, 0, 0.767); */
+    /* text-shadow: 9px 0px rgba(247, 0, 255, 0.733); */
+}
+
+/* .game {
+    border: 3px dashed black;
+} */
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+    font-weight: 900;
+    background-color: blue;
+    color: white;
+    padding: 5px 10px;
+}
+
+.board {
+    min-height: 180px;
+    border-right: 2px dashed blue;
+    border-left: 2px dashed blue;
+}
+
+.player-buttons {
+    display: flex;
+    border-right: 2px solid blue;
+    border-left: 2px solid blue;
+    border-bottom: 2px solid blue;
+}
+
+
+.player-btn {
+    flex:content;
+    transition: all 0.5s;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+.inactive {
+    pointer-events: none;
+}
+
+.onclick {
+    background-color: black;
+    color: white;
+}
+
+.board {
+    position: relative;
+}
+
+.at-end {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 0s;
+}
+
+.end-message {
+    font-size: 2rem;
+    font-weight: 900;
+    text-align: center;
+}
+
+#new-btn {
+    background-color: black;
+    color: white;
+    align-self: stretch;
+    /* opacity: 0.5; */
+    /* transition-duration: 0s; */
+}
+
+#new-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.blur {
+    filter:blur(3px);
+    transition: 10s;
+}
+
+.at-end-visible {
+    opacity: 1;
+    transition-duration: 2s;
+    visibility: visible;
+    transition-delay: 1s;
+}

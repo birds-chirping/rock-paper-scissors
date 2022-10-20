@@ -5,8 +5,40 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap"
+   rel="stylesheet">
 </head>
+
 <body>
+  <div class="container">
+    <div class="title">
+      <div>ROCK PAPER SCISSORS&nbsp;</div>
+    </div>
+
+
+    <div class="game">
+      <div class="scores">
+        <div id="player-score">PLAYER</div>
+        <div id="comp-score">ALIEN</div>
+      </div>
+
+      <div class="board">
+        <div class="graphic"></div>
+        <div class="at-end">
+          <div class="end-message"></div>
+          <button id="new-btn">New!</button>
+        </div>
+      </div>
+
+      <div class="player-buttons">
+        <button class="player-btn" id="rock">ROCK</button>
+        <button class="player-btn" id="paper">PAPER</button>
+        <button class="player-btn" id="scissors">SCISSORS</button>
+      </div>
+    </div>    
+  </div>
   <script src="rps.js"></script>
+
 </body>
 </html>
