@@ -130,9 +130,9 @@ button:hover {
     transition: 10s;
 }
 
-.at-end-visible {
+.visible {
     opacity: 1;
     transition-duration: 2s;
     visibility: visible;
-    transition-delay: 1s;
+    /* transition-delay: 1s; */
 }

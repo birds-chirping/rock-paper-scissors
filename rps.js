@@ -1,5 +1,5 @@
 // Play game (5 rounds)
-// function playGame() {
+// function playGGame() {
 //     let playerScore = 0;
 //     let computerScore = 0;
 //     let tie = 0;
@@ -12,7 +12,7 @@
 //             cancel = 1;
 //             break;
 //         }
-//         let winner = playRound(playerChoice, computerChoice);
+//         let winner = playGame(playerChoice, computerChoice);
 
 //         // Keep score
 //         winner === 'player' ? playerScore++ : winner === 'computer' ? computerScore++ : tie++;
@@ -27,16 +27,17 @@
 // }
 
 const allChoices = ['rock', 'paper', 'scissors'];
+const playerScore = document.querySelector('#player-score');
+const compScore = document.querySelector('#comp-score');
 const board = document.querySelector('.board');
 const choicesPics = document.querySelector('.graphic');
 const endScreen = document.querySelector('.at-end');
 const endMessage = document.querySelector('.end-message');
 const newGame = document.querySelector('#new-btn');
+const playerButtons = document.querySelectorAll('.player-btn');
 let playerChoice;
 let compChoice;
-let playerButtons;
-let playerScore = document.querySelector('#player-score');
-let compScore = document.querySelector('#comp-score');
+
 
 
 // Convert string to sentence case.
@@ -58,11 +59,8 @@ function getComputerChoice(choices) {
 // Play round
 function getWinner(playerSelection, computerSelection) {
     let winner;
-    let mess;
-    let selections = [playerSelection, computerSelection];
     switch(true) {
         case (playerSelection === computerSelection):
-            mess = "It's a tie!";
             winner = 'tie';
             break;
         case (
@@ -71,68 +69,82 @@ function getWinner(playerSelection, computerSelection) {
             playerSelection === 'paper' && computerSelection === 'rock'
             ):
             winner = 'player';
-            playerSelection = toSentenceCase(playerSelection);
-            computerSelection = toSentenceCase(computerSelection);
-            mess = `You win! ${playerSelection} beats ${computerSelection}.`;
             break;
         default:
             winner = 'computer';
-            playerSelection = toSentenceCase(playerSelection);
-            computerSelection = toSentenceCase(computerSelection);
-            mess = `You lose! ${computerSelection} beats ${playerSelection}.`;
     }
-    return [winner, mess];
+    return winner;
 }
+
 
 function updateScore(winner) {
-    if (winner != 'tie') {
-        winner == 'player' ? playerScore.textContent++ : compScore.textContent++;
+    if (winner !== 'tie') {
+        winner === 'player' ? playerScore.textContent++ : compScore.textContent++;
     }
 }
 
-function playRound(e) {
-    // console.log(e);
-    // board.innerHTML ='';
-    this.classList.add('onclick');
-    playerChoice = this.id;
-    compChoice = getComputerChoice(allChoices);
-    const message = getWinner(playerChoice, compChoice)[1];
-    const winner = getWinner(playerChoice, compChoice)[0];
-    // playerButtons.forEach(choice => {choice.setAttribute('disabled', 'true')});
-    playerButtons.forEach(choice => {choice.classList.add('inactive')});
 
-
-    choicesPics.textContent = `${this.id}`;
-    endMessage.textContent = `${message}`;
-    endScreen.classList.add('at-end-visible');
-        // Blur effect:
-        setTimeout(() => {
-            choicesPics.classList.add('blur');
-            updateScore(winner);
-        }, 1000);
-    
-    
-    
+function getMessage(playerChoice, compChoice, winner) {
+    let message;
+    playerChoice = toSentenceCase(playerChoice);
+    compChoice = toSentenceCase(compChoice);
+    if (winner === 'tie') {
+        message = "It's a tie!";
+    } else if (winner === 'player') {
+        message = `You win! ${playerChoice} beats ${compChoice}.`;
+    } else {
+        message = `You lose! ${compChoice} beats ${playerChoice}.`;
+    }
+    return message;
 }
 
 
-function startNewGame (e) {
-    // console.log(e);
+function playGame() {
+    this.classList.add('onclick');
+    playerButtons.forEach(choice => {choice.classList.add('inactive')});  //disable buttons
+
+    playerChoice = this.id;
+    compChoice = getComputerChoice(allChoices);
+    const winner = getWinner(playerChoice, compChoice);
+
+    choicesPics.textContent = `${this.id}`;
+
+    setTimeout(() => {
+        choicesPics.classList.add('blur');      // Add blur on board
+        updateScore(winner);
+
+        // Play 5 winning rounds
+        if (playerScore.textContent < 5 && compScore.textContent < 5) {
+            endMessage.textContent = getMessage(playerChoice, compChoice, winner);
+        } else {
+            playerScore.textContent > compScore.textContent ? 
+            endMessage.textContent = 'Player WON!':
+            endMessage.textContent = 'Alien WON!';
+            newGame.addEventListener('click', () => {
+                    playerScore.textContent = 0;
+                    compScore.textContent = 0;
+                });  
+        }
+        endScreen.classList.add('visible');
+    }, 1000);
+}
+
+
+function startNewGame () {
+    // Remove blur, clear board
     playerButtons.forEach(choice => {choice.classList.remove('onclick')});
     choicesPics.classList.remove('blur');
-    endScreen.classList.remove('at-end-visible');
     choicesPics.textContent = ``;
-    // playerButtons.forEach(choice => {choice.removeAttribute('disabled')});
+    endScreen.classList.remove('visible');
+
+    // Make buttons active again
     playerButtons.forEach(choice => {choice.classList.remove('inactive')});
 }
 
 
 function play() {
-    playerButtons = document.querySelectorAll('.player-btn');
-    playerButtons.forEach(choice => choice.addEventListener('click', playRound));
-    
-    // playerButtons.forEach(choice => choice.addEventListener('transitionend', removeTransition));
-    newGame.addEventListener('click', startNewGame);
+    playerButtons.forEach(choice => choice.addEventListener('click', playGame));
+    newGame.addEventListener('click', startNewGame);    
 }
 
 play();
