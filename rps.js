@@ -35,6 +35,8 @@ const newGame = document.querySelector('#new-btn');
 let playerChoice;
 let compChoice;
 let playerButtons;
+let playerScore = document.querySelector('#player-score');
+let compScore = document.querySelector('#comp-score');
 
 
 // Convert string to sentence case.
@@ -82,6 +84,11 @@ function getWinner(playerSelection, computerSelection) {
     return [winner, mess];
 }
 
+function updateScore(winner) {
+    if (winner != 'tie') {
+        winner == 'player' ? playerScore.textContent++ : compScore.textContent++;
+    }
+}
 
 function playRound(e) {
     // console.log(e);
@@ -89,24 +96,28 @@ function playRound(e) {
     this.classList.add('onclick');
     playerChoice = this.id;
     compChoice = getComputerChoice(allChoices);
-    let winner = getWinner(playerChoice, compChoice)[1];
+    const message = getWinner(playerChoice, compChoice)[1];
+    const winner = getWinner(playerChoice, compChoice)[0];
     // playerButtons.forEach(choice => {choice.setAttribute('disabled', 'true')});
     playerButtons.forEach(choice => {choice.classList.add('inactive')});
 
 
     choicesPics.textContent = `${this.id}`;
-    endMessage.textContent = `${winner}`;
+    endMessage.textContent = `${message}`;
     endScreen.classList.add('at-end-visible');
         // Blur effect:
         setTimeout(() => {
             choicesPics.classList.add('blur');
+            updateScore(winner);
         }, 1000);
-
+    
+    
+    
 }
 
 
 function startNewGame (e) {
-    console.log(e);
+    // console.log(e);
     playerButtons.forEach(choice => {choice.classList.remove('onclick')});
     choicesPics.classList.remove('blur');
     endScreen.classList.remove('at-end-visible');
