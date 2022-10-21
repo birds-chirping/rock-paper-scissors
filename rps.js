@@ -2,10 +2,10 @@ const allChoices = ['rock', 'paper', 'scissors'];
 const playerScore = document.querySelector('#player-score');
 const compScore = document.querySelector('#comp-score');
 const board = document.querySelector('.board');
-const choicesPics = document.querySelector('.graphic');
+const inGameBoard = document.querySelector('.graphic');
 const playerChoiceBoard = document.querySelector('.player-choice');
 const compChoiceBoard = document.querySelector('.comp-choice');
-const endScreen = document.querySelector('.at-end');
+const endScreen = document.querySelector('.end-screen');
 const endMessage = document.querySelector('.end-message');
 const playerButtons = document.querySelectorAll('.player-btn');
 let playerChoice;
@@ -19,7 +19,7 @@ newGameBtn.setAttribute('id', 'new-btn');
 
 function disableButtons(btn) {
     btn.classList.add('onclick');
-    playerButtons.forEach(choice => {choice.classList.add('inactive')});  //disable buttons
+    playerButtons.forEach(choice => {choice.classList.add('inactive')});  // disable buttons
 }
 
 function enableButtons() {
@@ -28,7 +28,7 @@ function enableButtons() {
 }
 
 function resetScreen() {
-    choicesPics.classList.remove('blur');  // remove blur
+    inGameBoard.classList.remove('blur');  // remove blur
     endScreen.classList.remove('visible');  // remove endscreen
 }
 
@@ -109,7 +109,7 @@ function playGame() {
     compChoice = getComputerChoice(allChoices);
     const winner = getWinner(playerChoice, compChoice);
 
-    // Update choices & score
+    // Update board: choices & score
     updateChoicesOnBoard(this.id);
     updateScore(winner);
 
@@ -124,9 +124,14 @@ function playGame() {
         endMessage.textContent = 'Human WON!':
         endMessage.textContent = 'Rabbit WON!';
 
-        endScreen.appendChild(newGameBtn);  //add new game option btn
+        endScreen.appendChild(newGameBtn);  // add new game option btn
         newGameBtn.addEventListener('click', resetScore); 
     }
+
+    // End scene
+    setTimeout(() => {
+        inGameBoard.classList.add('blur'); 
+    }, 1000);
     endScreen.classList.add('visible');
 }
 
