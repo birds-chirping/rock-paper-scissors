@@ -33,15 +33,17 @@ button {
     background: white;
     color: rgba(200, 255, 0, 0.822);
     text-shadow: 9px 0px rgba(225, 0, 255, 0.575);
+    margin: 0px 5px;
+    
     /* color: rgba(0, 0, 255, 0.767);
     text-shadow: 12px 0px rgba(255, 72, 0, 0.548); */
     /* color: rgba(200, 255, 0, 0.767); */
     /* text-shadow: 9px 0px rgba(247, 0, 255, 0.733); */
 }
 
-/* .game {
-    border: 3px dashed black;
-} */
+.game {
+    margin: 0px 5px;
+}
 
 .scores {
     display: flex;
@@ -54,10 +56,68 @@ button {
 }
 
 .board {
-    min-height: 180px;
+    min-height: 280px;
+    position: relative;
     border-right: 2px dashed blue;
     border-left: 2px dashed blue;
 }
+
+.graphic {
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;    
+}
+
+
+.img-human {
+    flex:1;
+    min-width: 80px;
+    max-width: 200px;
+    width: 100%;
+}
+
+ 
+.img-comp {
+    flex:1;
+    min-width: 60px;
+    max-width: 150px;
+    width: 100%;
+}
+
+.choices {
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-self: stretch;
+    padding-right: 10px;
+}
+
+.player-choice {
+    font-size: 2.3rem;
+    font-weight: bolder;
+    writing-mode: vertical-lr;
+    color: white;
+    background-color: orangered;
+    padding-top: 10px;
+}
+
+
+.comp-choice {
+    align-self: flex-end;
+    font-size: 2.3rem;
+    font-weight: bolder;
+    text-align: end;
+    writing-mode: vertical-rl;
+    color: white;
+    background-color: orangered;
+}
+
 
 .player-buttons {
     display: flex;
@@ -86,53 +146,54 @@ button:hover {
     color: white;
 }
 
-.board {
-    position: relative;
-}
 
 .at-end {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content: space-between;
     position: absolute;
-    top: 0;
-    left: 0;
+    bottom: 2%;
+    left: 0%;
     width: 100%;
-    height: 100%;
-    position: absolute;
     opacity: 0;
+    background-color: rgba(245, 245, 245, 0.811);
     visibility: hidden;
     transition-delay: 0s;
+    padding-top: 1%;
+    border:2px 2px 0px 2px solid white;
+    border-radius: 10px;
+
 }
 
 .end-message {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 900;
     text-align: center;
 }
 
 #new-btn {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.629);
     color: white;
     align-self: stretch;
+    /* padding: 3px; */
     /* opacity: 0.5; */
     /* transition-duration: 0s; */
 }
 
 #new-btn:hover {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.616);
     color: black;
 }
 
 .blur {
-    filter:blur(3px);
-    transition: 10s;
+    filter:blur(2px);
+    transition: 30s;
 }
 
 .visible {
     opacity: 1;
-    transition-duration: 2s;
+    transition-duration: 1s;
     visibility: visible;
     /* transition-delay: 1s; */
 }

@@ -30,7 +30,13 @@ const allChoices = ['rock', 'paper', 'scissors'];
 const playerScore = document.querySelector('#player-score');
 const compScore = document.querySelector('#comp-score');
 const board = document.querySelector('.board');
+
+
 const choicesPics = document.querySelector('.graphic');
+const playerChoiceBoard = document.querySelector('.player-choice');
+const compChoiceBoard = document.querySelector('.comp-choice');
+
+
 const endScreen = document.querySelector('.at-end');
 const endMessage = document.querySelector('.end-message');
 const newGame = document.querySelector('#new-btn');
@@ -86,8 +92,8 @@ function updateScore(winner) {
 
 function getMessage(playerChoice, compChoice, winner) {
     let message;
-    playerChoice = toSentenceCase(playerChoice);
-    compChoice = toSentenceCase(compChoice);
+    playerChoice = playerChoice.toUpperCase();
+    compChoice = compChoice.toUpperCase();
     if (winner === 'tie') {
         message = "It's a tie!";
     } else if (winner === 'player') {
@@ -107,7 +113,9 @@ function playGame() {
     compChoice = getComputerChoice(allChoices);
     const winner = getWinner(playerChoice, compChoice);
 
-    choicesPics.textContent = `${this.id}`;
+    // choicesPics.textContent = `${this.id}`;
+    playerChoiceBoard.textContent = `${this.id}`.toUpperCase();
+    compChoiceBoard.textContent = `${compChoice}`.toUpperCase();
 
     setTimeout(() => {
         choicesPics.classList.add('blur');      // Add blur on board
@@ -121,12 +129,12 @@ function playGame() {
             endMessage.textContent = 'Player WON!':
             endMessage.textContent = 'Alien WON!';
             newGame.addEventListener('click', () => {
-                    playerScore.textContent = 0;
-                    compScore.textContent = 0;
+                    playerScore.textContent = '0';
+                    compScore.textContent = '0';
                 });  
         }
         endScreen.classList.add('visible');
-    }, 1000);
+    }, 300);
 }
 
 
@@ -134,7 +142,9 @@ function startNewGame () {
     // Remove blur, clear board
     playerButtons.forEach(choice => {choice.classList.remove('onclick')});
     choicesPics.classList.remove('blur');
-    choicesPics.textContent = ``;
+    // choicesPics.textContent = ``;
+    playerChoiceBoard.textContent = '';
+    compChoiceBoard.textContent = '';
     endScreen.classList.remove('visible');
 
     // Make buttons active again
