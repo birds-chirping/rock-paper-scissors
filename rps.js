@@ -7,19 +7,48 @@ const playerChoiceBoard = document.querySelector('.player-choice');
 const compChoiceBoard = document.querySelector('.comp-choice');
 const endScreen = document.querySelector('.at-end');
 const endMessage = document.querySelector('.end-message');
-const newGame = document.querySelector('#new-btn');
 const playerButtons = document.querySelectorAll('.player-btn');
 let playerChoice;
 let compChoice;
 
 
-// Get computer's choice
+const newGameBtn = document.createElement('button');
+newGameBtn.textContent = 'NEW GAME';
+newGameBtn.setAttribute('id', 'new-btn');
+
+
+function disableButtons(btn) {
+    btn.classList.add('onclick');
+    playerButtons.forEach(choice => {choice.classList.add('inactive')});  //disable buttons
+}
+
+function enableButtons() {
+        playerButtons.forEach(choice => {choice.classList.remove('inactive')});
+        playerButtons.forEach(choice => {choice.classList.remove('onclick')});
+}
+
+function resetScreen() {
+    choicesPics.classList.remove('blur');  // remove blur
+    endScreen.classList.remove('visible');  // remove endscreen
+}
+
+
+function updateChoicesOnBoard(choice) {
+    playerChoiceBoard.textContent = `${choice}`.toUpperCase();
+    compChoiceBoard.textContent = `${compChoice}`.toUpperCase();
+}
+
+function resetChoicesOnBoard() {
+    playerChoiceBoard.textContent = '';
+    compChoiceBoard.textContent = ''; 
+}
+
+
 function getComputerChoice(choices) {
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
 
-// Play round
 function getWinner(playerSelection, computerSelection) {
     let winner;
     switch(true) {
@@ -50,11 +79,12 @@ function updateScore(winner) {
 function resetScore () {
     playerScore.textContent = '0';
     compScore.textContent = '0';
-    newGame.removeEventListener('click', resetScore);
+    newGameBtn.removeEventListener('click', resetScore);
+    endScreen.removeChild(newGameBtn);
 }
 
 
-function getMessage(playerChoice, compChoice, winner) {
+function getEndRoundMessage(playerChoice, compChoice, winner) {
     let message;
     playerChoice = playerChoice.toUpperCase();
     compChoice = compChoice.toUpperCase();
@@ -70,50 +100,44 @@ function getMessage(playerChoice, compChoice, winner) {
 
 
 function playGame() {
-    this.classList.add('onclick');
-    playerButtons.forEach(choice => {choice.classList.add('inactive')});  //disable buttons
+    resetChoicesOnBoard();
+    resetScreen();
+    disableButtons(this);
 
+    // Get choice & find winner
     playerChoice = this.id;
     compChoice = getComputerChoice(allChoices);
     const winner = getWinner(playerChoice, compChoice);
 
-    playerChoiceBoard.textContent = `${this.id}`.toUpperCase();
-    compChoiceBoard.textContent = `${compChoice}`.toUpperCase();
-
-    setTimeout(() => {
-        choicesPics.classList.add('blur');      // Add blur on board
-        updateScore(winner);
-
-        // Reset score after 5 winning rounds
-        if (playerScore.textContent < 5 && compScore.textContent < 5) {
-            endMessage.textContent = getMessage(playerChoice, compChoice, winner);
-        } else {
-            playerScore.textContent > compScore.textContent ? 
-            endMessage.textContent = 'Human WON!':
-            endMessage.textContent = 'Rabbit WON!';
-            newGame.addEventListener('click', resetScore);  
-        }
-        endScreen.classList.add('visible');
-    }, 300);
-}
+    // Update choices & score
+    updateChoicesOnBoard(this.id);
+    updateScore(winner);
 
 
-function startNewGame () {
-    // Remove blur, clear board
-    playerButtons.forEach(choice => {choice.classList.remove('onclick')});
-    choicesPics.classList.remove('blur');
-    playerChoiceBoard.textContent = '';
-    compChoiceBoard.textContent = '';
-    endScreen.classList.remove('visible');
+    // Check end game
+    if (playerScore.textContent < 5 && compScore.textContent < 5) {
+        endMessage.textContent = getEndRoundMessage(playerChoice, compChoice, winner);
+        enableButtons(); 
+    } else {
+        disableButtons(this);
+        playerScore.textContent > compScore.textContent ? 
+        endMessage.textContent = 'Human WON!':
+        endMessage.textContent = 'Rabbit WON!';
 
-    // Make buttons active again
-    playerButtons.forEach(choice => {choice.classList.remove('inactive')});
+        endScreen.appendChild(newGameBtn);  //add new game option btn
+        newGameBtn.addEventListener('click', resetScore); 
+    }
+    endScreen.classList.add('visible');
 }
 
 
 function play() {
     playerButtons.forEach(choice => choice.addEventListener('click', playGame));
-    newGame.addEventListener('click', startNewGame);    
+    newGameBtn.addEventListener('click', () => {
+        enableButtons();
+        resetChoicesOnBoard();
+        resetScreen();
+    }); 
 }
 
 play();

@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
 }
 
 body {
@@ -176,6 +176,7 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.629);
     color: white;
     align-self: stretch;
+    /* visibility:collapse; */
     /* padding: 3px; */
     /* opacity: 0.5; */
     /* transition-duration: 0s; */
