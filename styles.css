@@ -140,7 +140,7 @@ button:hover {
     pointer-events: none;
 }
 
-.onclick {
+.clicked {
     background-color: black;
     color: white;
 }

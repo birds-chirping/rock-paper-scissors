@@ -18,13 +18,12 @@ newGameBtn.setAttribute('id', 'new-btn');
 
 
 function disableButtons(btn) {
-    btn.classList.add('onclick');
-    playerButtons.forEach(choice => {choice.classList.add('inactive')});  // disable buttons
+    btn.classList.add('clicked');
+    playerButtons.forEach(choice => {choice.classList.add('inactive')});
 }
 
 function enableButtons() {
-        playerButtons.forEach(choice => {choice.classList.remove('inactive')});
-        playerButtons.forEach(choice => {choice.classList.remove('onclick')});
+        playerButtons.forEach(choice => {choice.classList.remove('inactive', 'clicked')});
 }
 
 function resetScreen() {
@@ -79,7 +78,6 @@ function updateScore(winner) {
 function resetScore () {
     playerScore.textContent = '0';
     compScore.textContent = '0';
-    newGameBtn.removeEventListener('click', resetScore);
     endScreen.removeChild(newGameBtn);
 }
 
@@ -125,7 +123,6 @@ function playGame() {
         endMessage.textContent = 'Rabbit WON!';
 
         endScreen.appendChild(newGameBtn);  // add new game option btn
-        newGameBtn.addEventListener('click', resetScore); 
     }
 
     // End scene
@@ -139,6 +136,7 @@ function playGame() {
 function play() {
     playerButtons.forEach(choice => choice.addEventListener('click', playGame));
     newGameBtn.addEventListener('click', () => {
+        resetScore();
         enableButtons();
         resetChoicesOnBoard();
         resetScreen();
