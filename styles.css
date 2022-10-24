@@ -1,3 +1,13 @@
+html {
+    font-size: 17px;
+}
+
+@media screen and (max-width: 430px) {
+    html {
+        font-size: 12px;
+    }  
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -32,10 +42,10 @@ button {
 }
 
 .title {
-    max-width: 70vh;
+    /* max-width: 70vh; */
     line-height: 1.2;
     font-family: 'Rammetto One', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 900;
     text-align: center;
     color: rgba(200, 255, 0, 0.822);
@@ -45,9 +55,9 @@ button {
     margin: 5% 5px 30px;
 }
 
-/* .game {
+.game {
     margin: 0px 5px;
-} */
+}
 
 .scores {
     display: flex;
