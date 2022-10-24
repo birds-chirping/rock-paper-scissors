@@ -13,11 +13,11 @@
 <body>
   <div class="container">
     <div class="title">
-      <div>ROCK PAPER SCISSORS&nbsp;</div>
+      <div><h1>ROCK PAPER SCISSORS&nbsp;</h1></div>
     </div>
 
-
     <div class="game">
+
       <div class="scores">
         <div>HUMAN &nbsp;<span id="player-score">0</span></div>
         <div> <span id="comp-score">0</span>&nbsp; RABBIT</div>
@@ -27,22 +27,28 @@
 
         <div class="graphic">
           <div class="human">
-            <img class="img-human" src="/images/human.svg" alt="astronaut">
+            <img class="img-human" src="/images/human.png" alt="astronaut">
           </div>
           <div class="choices">
             <div class="player-choice"></div>
             <div class="comp-choice"></div>
           </div>
-
           <div class="comp">
             <img class="img-comp" src="/images/rabbit.png" alt="rabbit">
           </div>
         </div>
 
         <div class="end-screen">
-          <div class="end-message"></div>
-          <!-- <button id="new-btn">NEW GAME</button> -->
+          
+          <div class="end-mess-container">
+            <div class="end-message"></div>
+          </div>
+            <button id="new-btn">NEW GAME</button>
         </div>
+      </div>
+
+      <div class="round-mess-container">
+        <div class="round-message">Round won</div>
       </div>
 
       <div class="player-buttons">
@@ -56,3 +62,5 @@
 
 </body>
 </html>
+
+

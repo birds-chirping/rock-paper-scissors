@@ -1,20 +1,17 @@
 const allChoices = ['rock', 'paper', 'scissors'];
 const playerScore = document.querySelector('#player-score');
 const compScore = document.querySelector('#comp-score');
-const board = document.querySelector('.board');
+const roundMessage = document.querySelector('.round-message');
 const inGameBoard = document.querySelector('.graphic');
 const playerChoiceBoard = document.querySelector('.player-choice');
 const compChoiceBoard = document.querySelector('.comp-choice');
 const endScreen = document.querySelector('.end-screen');
 const endMessage = document.querySelector('.end-message');
+const newGameBtn = document.querySelector('button');
 const playerButtons = document.querySelectorAll('.player-btn');
 let playerChoice;
 let compChoice;
 
-
-const newGameBtn = document.createElement('button');
-newGameBtn.textContent = 'NEW GAME';
-newGameBtn.setAttribute('id', 'new-btn');
 
 
 function disableButtons(btn) {
@@ -78,7 +75,6 @@ function updateScore(winner) {
 function resetScore () {
     playerScore.textContent = '0';
     compScore.textContent = '0';
-    endScreen.removeChild(newGameBtn);
 }
 
 
@@ -114,22 +110,17 @@ function playGame() {
 
     // Check end game
     if (playerScore.textContent < 5 && compScore.textContent < 5) {
-        endMessage.textContent = getEndRoundMessage(playerChoice, compChoice, winner);
+        roundMessage.textContent = getEndRoundMessage(playerChoice, compChoice, winner);
+        roundMessage.classList.add('visible');
         enableButtons(); 
     } else {
         disableButtons(this);
         playerScore.textContent > compScore.textContent ? 
-        endMessage.textContent = 'Human WON!':
-        endMessage.textContent = 'Rabbit WON!';
-
-        endScreen.appendChild(newGameBtn);  // add new game option btn
+            endMessage.textContent = 'Human WON!':
+            endMessage.textContent = 'Rabbit WON!';
+        endScreen.classList.add('visible');  // winner message & new game button
+        inGameBoard.classList.add('blur');   // add blur over board
     }
-
-    // End scene
-    setTimeout(() => {
-        inGameBoard.classList.add('blur'); 
-    }, 1000);
-    endScreen.classList.add('visible');
 }
 
 
@@ -140,6 +131,7 @@ function play() {
         enableButtons();
         resetChoicesOnBoard();
         resetScreen();
+        roundMessage.classList.remove('visible'); //remove end round message
     }); 
 }
 
