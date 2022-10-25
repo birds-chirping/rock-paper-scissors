@@ -23,16 +23,28 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
 }
 
 button {
     border: none;
     background-color: white;
-    color: black;
+    color: rgba(0, 0, 0, 0.906);
     font-size: 1.6rem;
     font-weight: 900;
+    font-family: 'Roboto', Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
     padding: 10px 0px;
+}
+
+button:hover {
+    background-color: rgba(44, 44, 44, 0.978);
+    color: white;
+}
+
+button:focus {
+    outline-color: transparent;
+    background-color: rgba(61, 61, 61, 0.978);
+    color: white;
 }
 
 .container {
@@ -42,44 +54,37 @@ button {
 }
 
 .title {
-    /* max-width: 70vh; */
     line-height: 1.2;
     font-family: 'Rammetto One', sans-serif;
     font-size: 2rem;
     font-weight: 900;
     text-align: center;
-    color: rgba(200, 255, 0, 0.822);
-    /* text-shadow: 9px 0px rgba(225, 0, 255, 0.575); */
-    text-shadow: 9px 0px rgba(225, 0, 255, 0.575), 
-                12px 0px rgba(0, 255, 255, 0.275);
+    color: rgba(200, 255, 0, 0.922);
+    text-shadow: 9px 0px rgba(225, 0, 255, 0.575);
     margin: 5% 5px 30px;
 }
 
 .game {
     margin: 0px 5px;
+    border-radius: 7px;
 }
 
 .scores {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
     display: flex;
     justify-content: space-around;
     font-size: 2rem;
     font-weight: 900;
     padding: 5px 10px;
-    color: blue;
-    border: 2px solid blue;
-    border-bottom: 0px;
-    text-shadow: 0px 0px 30px white;
-    /* background: rgba(255, 255, 255, 0.144); */
-    background: rgba(255, 255, 255, 0.582);
+    color: #0a3c91;
+    background: rgba(255, 255, 255, 0.882);
 }
 
 .board {
     min-height: 300px;
     position: relative;
-    border-right: 2px dashed blue;
-    border-left: 2px dashed blue;
-    /* background: rgba(255, 255, 255, 0.582); */
-    background: rgba(255, 255, 255, 0.233);
+    background: rgba(255, 255, 255, 0.75);
 }
 
 .graphic {
@@ -93,18 +98,18 @@ button {
     height: 100%;    
 }
 
-
 .img-human {
     min-width: 80px;
     max-width: 200px;
     width: 100%;
+    margin-bottom: -10px;
 }
 
- 
 .img-comp {
     min-width: 60px;
     max-width: 150px;
     width: 100%;
+    margin-bottom: -5px;
 }
 
 .choices {
@@ -121,10 +126,10 @@ button {
     font-weight: bolder;
     writing-mode: vertical-lr;
     color: white;
-    background-color: orangered;
+    background-color: #fc3c21c7;
     padding-top: 10px;
+    margin-top: 6px;
 }
-
 
 .comp-choice {
     align-self: flex-end;
@@ -133,9 +138,9 @@ button {
     text-align: end;
     writing-mode: vertical-rl;
     color: white;
-    background-color: orangered;
+    background-color: #fc3c21c7;
+    padding: 10px 0px;
 }
-
 
 .round-mess-container {
     display: flex;
@@ -143,9 +148,7 @@ button {
     justify-content: center;
     min-height: 50px;
     position: relative;
-    border-right: 2px dashed blue;
-    border-left: 2px dashed blue;
-    background: rgba(255, 255, 255, 0.233);
+    background: rgba(255, 255, 255, 0.75);
 }
 
 .round-message {
@@ -153,42 +156,32 @@ button {
     position: absolute;
     width: 100%;
     opacity: 0;
-    background-color: rgba(245, 245, 245, 0.811);
     visibility: hidden;
-    transition-delay: 0s;
-    padding: 5px;
+    background-color: rgba(245, 245, 245, 0.811);
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
     border:2px 2px 2px 2px solid white;
     border-radius: 7px;
+    padding: 5px;
+    transition-delay: 0s;
 }
-
 
 .player-buttons {
     display: flex;
-    border-right: 2px solid blue;
-    border-left: 2px solid blue;
-    border-bottom: 2px solid blue;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    overflow: hidden;
 }
-
 
 .player-btn {
-    flex:content;
+    flex:auto;
     transition: all 0.5s;
-}
-
-button:hover {
-    background-color: black;
-    color: white;
 }
 
 .inactive {
     pointer-events: none;
 }
-
-.clicked {
-    background-color: black;
-    color: white;
-}
-
 
 .end-screen {
     display: flex;
@@ -202,7 +195,7 @@ button:hover {
     height: 60%;
     opacity: 0;
     visibility: hidden;
-    transition-delay: 0s;
+    /* transition-delay: 0s; */
     border-radius: 9px;
 }
 
@@ -216,22 +209,15 @@ button:hover {
     border-top-right-radius: inherit;
 }
 
-
 .end-message {
     font-size: 2.3rem;
     font-weight: 900;
+    color: rgb(54, 54, 54);
+    text-shadow: 0px 0px 5px white;
 }
-
-
-.round-message {
-    font-size: 1.5rem;
-    font-weight: 900;
-    text-align: center;
-}
-
 
 #new-btn {
-    background-color: rgba(56, 56, 56, 0.908);
+    background-color: rgba(61, 61, 61, 0.978);
     color: white;
     align-self: stretch;
     border-bottom-left-radius: inherit;
@@ -240,7 +226,7 @@ button:hover {
 
 #new-btn:hover {
     background-color: rgba(255, 255, 255, 0.816);
-    color: black;
+    color: rgba(59, 59, 59, 0.788);
 }
 
 .blur {
@@ -252,4 +238,14 @@ button:hover {
     opacity: 1;
     transition-duration: 1s;
     visibility: visible;
+}
+
+.credits {
+    color: rgb(44, 44, 44);
+    background-color: #ffffff;
+    font-family: 'Roboto', Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    padding: 1%;
+    margin: 30px 5px 0px 5px;
+    border-radius: 7px;
 }
