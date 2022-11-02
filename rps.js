@@ -15,8 +15,8 @@ let compChoice;
 
 
 function disableButtons(btn) {
-    btn.classList.add('clicked');
     playerButtons.forEach(choice => {choice.classList.add('inactive')});
+    btn.classList.add('clicked');
 }
 
 function enableButtons() {
@@ -108,18 +108,22 @@ function playGame() {
     updateScore(winner);
 
 
+    roundMessage.classList.add('visible');
+
     // Check end game
-    if (playerScore.textContent < 5 && compScore.textContent < 5) {
-        roundMessage.textContent = getEndRoundMessage(playerChoice, compChoice, winner);
-        roundMessage.classList.add('visible');
-        enableButtons(); 
-    } else {
+    if (playerScore.textContent > 4 || compScore.textContent > 4) {
         disableButtons(this);
+        roundMessage.textContent = getEndRoundMessage(playerChoice, compChoice, winner);
         playerScore.textContent > compScore.textContent ? 
             endMessage.textContent = 'Human WON!':
             endMessage.textContent = 'Rabbit WON!';
-        endScreen.classList.add('visible');  // winner message & new game button
-        inGameBoard.classList.add('blur');   // add blur over board
+        setTimeout(function() {
+            endScreen.classList.add('visible');  // winner message & new game button
+            inGameBoard.classList.add('blur');   // add blur over board
+        }, 1500);
+    } else {
+        roundMessage.textContent = getEndRoundMessage(playerChoice, compChoice, winner);
+        enableButtons(); 
     }
 }
 
