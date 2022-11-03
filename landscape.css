@@ -1,0 +1,39 @@
+.container {
+    max-width: 70vmin;
+}
+
+.title {
+    font-size: 3.7vmin;
+}
+
+.game {
+    width: 70vmin;
+    min-height: 70vmin;
+}
+
+.scores {
+    font-size: 4vmin;
+}
+
+.choices {
+    font-size: 5.5vmin;
+}
+
+.end-message {
+    font-size: 5vmin;
+}
+
+.round-mess-container {
+    min-height: 5vmin;
+}
+.round-message {
+    font-size: 2.5vmin;
+}
+
+button {
+    font-size: 4vmin;
+}
+
+.credits {
+    font-size: 2vmin;
+}
