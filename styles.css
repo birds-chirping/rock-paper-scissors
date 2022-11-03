@@ -1,196 +1,145 @@
-html {
-    font-size: 17px;
-}
-
-@media screen and (max-width: 430px) {
-    html {
-        font-size: 12px;
-    }  
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* border: 1px solid red; */
 }
 
 body {
-    background-image: url('/images/bg.jpg');
-    background-repeat: no-repeat;
+    background-image: url('./images/bg.jpg');
+    background-repeat: repeat-x;
     background-attachment: fixed;
     background-size: auto 100%;
     background-position-x: center;
     height: 100vh;
+
     display: flex;
     justify-content: center;
-    font-family: 'Roboto', Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Verdana, Arial, Helvetica, sans-serif;
 }
 
-button {
-    border: none;
-    background-color: rgba(255, 255, 255, 0.938);
-    color: rgba(0, 0, 0, 0.806);
-    font-size: 1.6rem;
-    font-weight: 900;
-    font-family: 'Roboto', Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
-    padding: 10px 0px;
-}
-
-button:hover {
-    background-color: rgba(44, 44, 44, 0.970);
-    color: white;
-}
-
-button:focus {
-    outline-color: transparent;
-    background-color: rgba(61, 61, 61, 0.978);
-    color: white;
-}
+/* ----------------------------------------------------- */
+/* -------------------- container ---------------------- */
+/* ----------------------------------------------------- */
 
 .container {
     display: flex;
     flex-direction: column;
-    max-width: 70vh;
+    align-items: center;
+    width: 95vw;
+    gap: 2vmin;
 }
+
+/* ----------------------------------------------------- */
+/* -------------------- T I T L E ---------------------- */
+/* ----------------------------------------------------- */
 
 .title {
     line-height: 1.2;
     font-family: 'Rammetto One', sans-serif;
-    font-size: 2rem;
+    font-size: 5vmin;
     font-weight: 900;
     text-align: center;
+    width: 100%;
+
     color: rgba(200, 255, 0, 0.922);
     text-shadow: 1.1vmin 0px rgba(225, 0, 255, 0.575),
                  2vmin 0px rgba(0, 195, 255, 0.575);
-    margin: 5% 5px 30px;
+    margin-top: 2vmin;
 }
+
+
+/* ----------------------------------------------------- */
+/* --------------------- G A M E ----------------------- */
+/* ----------------------------------------------------- */
 
 .game {
-    margin: 0px 5px;
     border-radius: 7px;
+    width: 95vmin;
+    min-height: 95vmin;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid rgba(172, 255, 47, 0.651); */
+
 }
+
+
+/* --------------------- Scores ------------------------ */
 
 .scores {
-    border-top-left-radius: inherit;
-    border-top-right-radius: inherit;
     display: flex;
     justify-content: space-around;
-    font-size: 2rem;
+    padding: 1vmin;
+
+    font-size: 5vmin;
     font-weight: 900;
-    padding: 5px 10px;
-    color: #0a3c91;
+
     color: white;
     background: rgba(255, 255, 255, 0.750);
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
 }
 
+
+/* ---------------------- Board ------------------------ */
+
 .board {
-    min-height: 300px;
+    flex: 1;
     position: relative;
     background: rgba(255, 255, 255, 0.600);
 }
 
 .graphic {
     display:flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 100%;  
 }
 
-.img-human {
-    min-width: 80px;
-    max-width: 200px;
-    width: 100%;
-    margin-bottom: -10px;
+/* ----- Pictures ----- */
+.human {
+    flex: 3;
+    background-image: url('./images/human.png');
+    background-size:contain;
+    background-position: bottom;
+    background-repeat:no-repeat;
 }
 
-.img-comp {
-    min-width: 60px;
-    max-width: 150px;
-    width: 100%;
-    margin-bottom: -5px;
+.comp {
+    flex: 2;
+    background-image: url('./images/rabbit.png');
+    background-size:contain ;
+    background-position: bottom;
+    background-repeat:no-repeat;
 }
 
+/* ----- Choices ----- */
 .choices {
-    flex: 1;
-    min-width: 120px;
+    flex: 3;
+    font-size: 7vmin;
     display: flex;
     justify-content: space-around;
     align-self: stretch;
-    padding-right: 10px;
+    color: rgba(0, 0, 0, 0.570);
 }
 
 .player-choice {
-    font-size: 2.3rem;
     font-weight: bolder;
     writing-mode: vertical-lr;
-    color: white;
-    color: rgba(0, 0, 0, 0.570);
-
     background-color: #fc3c21c7;
     background-color: rgba(200, 255, 0, 0.800);
-
-    padding-top: 10px;
-    margin-top: 6px;
+    padding-top: 1vmin;
+    margin-top: 1vmin;
 }
 
 .comp-choice {
     align-self: flex-end;
-    font-size: 2.3rem;
     font-weight: bolder;
-    text-align: end;
     writing-mode: vertical-rl;
-    color: white;
-    color: rgba(0, 0, 0, 0.570);
     background-color: #fc3c21c7;
     background-color: rgba(200, 255, 0, 0.800);
-
-    padding: 10px 0px;
+    padding: 1vmin 0;
 }
 
-.round-mess-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 50px;
-    position: relative;
-    background: rgba(255, 255, 255, 0.600);
-}
-
-.round-message {
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    background-color: rgba(245, 245, 245, 0.811);
-    font-size: 1.5rem;
-    font-weight: 300;
-    text-align: center;
-    border:2px 2px 2px 2px solid white;
-    border-radius: 7px;
-    padding: 5px;
-    transition-delay: 0s;
-}
-
-.player-buttons {
-    display: flex;
-    border-bottom-left-radius: inherit;
-    border-bottom-right-radius: inherit;
-    overflow: hidden;
-}
-
-.player-btn {
-    flex:auto;
-    transition: all 0.5s;
-}
-
-.inactive {
-    pointer-events: none;
-}
+/* -------------------- Game end ----------------------- */
 
 .end-screen {
     display: flex;
@@ -220,15 +169,15 @@ button:focus {
 }
 
 .end-message {
-    font-size: 2.3rem;
+    font-size: 7vmin;
     font-weight: 900;
-    color: rgb(54, 54, 54);
-    text-shadow: 0px 0px 5px white;
+    color: rgba(54, 54, 54, 0.89);
 }
+
 
 #new-btn {
     background-color: rgba(61, 61, 61, 0.978);
-    color: white;
+    color: rgba(255, 255, 255, 0.900);
     align-self: stretch;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
@@ -238,6 +187,91 @@ button:focus {
     background-color: rgba(255, 255, 255, 0.950);
     color: rgba(59, 59, 59, 0.788);
 }
+
+
+/* --------------------- Round end --------------------- */
+
+.round-mess-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 8vmin;
+    position: relative;
+    background: rgba(255, 255, 255, 0.600);
+}
+
+.round-message {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(245, 245, 245, 0.811);
+    font-size: 4vmin;
+    font-weight: 300;
+    text-align: center;
+    border:2px 2px 2px 2px solid white;
+    border-radius: 7px;
+    padding: 0.5vmin;
+    transition-delay: 0s;
+}
+
+
+/* ------------------- Player's  buttons---------------- */
+
+button {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.938);
+    color: rgba(0, 0, 0, 0.806);
+    font-size: 5vmin;
+    font-weight: 900;
+    font-family: 'Roboto', Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
+    padding: 1vmin 0;
+}
+
+button:hover {
+    background-color: rgba(44, 44, 44, 0.970);
+    color: white;
+}
+
+button:focus {
+    outline-color: transparent;
+    background-color: rgba(61, 61, 61, 0.978);
+    color: white;
+}
+
+.player-buttons {
+    display: flex;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    overflow: hidden;
+}
+
+.player-btn {
+    flex:auto;
+    transition: all 0.5s;
+}
+
+/* ----------------------------------------------------- */
+/* ----------------- C R E D I T S --------------------- */
+/* ----------------------------------------------------- */
+
+.credits {
+    width: 100%;
+    color: rgb(44, 44, 44);
+    background-color: rgba(255, 255, 255, 0.600);
+    font-family: 'Roboto', Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    padding: 1%;
+    border-radius: 7px;
+    font-size: 3vmin;
+    margin: 2vmin 0;
+}
+
+
+/* ----------------------------------------------------- */
+/* ------------------- custom classes ------------------ */
+/* ----------------------------------------------------- */
 
 .blur {
     filter:blur(2px);
@@ -249,12 +283,64 @@ button:focus {
     visibility: visible;
 }
 
-.credits {
-    color: rgb(44, 44, 44);
-    background-color: #ffffffc4;
-    font-family: 'Roboto', Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
-    font-weight: 300;
-    padding: 1%;
-    margin: 30px 5px 0px 5px;
-    border-radius: 7px;
+.inactive {
+    pointer-events: none;
 }
+
+/* ===================================================== */
+/* ======================= media ======================= */
+/* ===================================================== */
+
+@media screen and (orientation: landscape) {
+    .container {
+        max-width: 70vmin;
+    }
+
+    .title {
+        font-size: 3.7vmin;
+    }
+
+    .game {
+        width: 70vmin;
+        min-height: 70vmin;
+    }
+
+    .scores {
+        font-size: 4vmin;
+    }
+
+    .choices {
+        font-size: 5.5vmin;
+    }
+
+    .end-message {
+        font-size: 5vmin;
+    }
+
+    .round-mess-container {
+        min-height: 5vmin;
+    }
+    .round-message {
+        font-size: 2.5vmin;
+    }
+
+    button {
+        font-size: 4vmin;
+    }
+
+    .credits {
+        font-size: 2vmin;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

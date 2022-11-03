@@ -28,7 +28,6 @@ function resetScreen() {
     endScreen.classList.remove('visible');  // remove endscreen
 }
 
-
 function updateChoicesOnBoard(choice) {
     playerChoiceBoard.textContent = `${choice}`.toUpperCase();
     compChoiceBoard.textContent = `${compChoice}`.toUpperCase();
@@ -38,7 +37,6 @@ function resetChoicesOnBoard() {
     playerChoiceBoard.textContent = '';
     compChoiceBoard.textContent = ''; 
 }
-
 
 function getComputerChoice(choices) {
     return choices[Math.floor(Math.random() * choices.length)];
