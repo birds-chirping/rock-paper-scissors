@@ -9,6 +9,7 @@
 .game {
     width: 70vmin;
     min-height: 70vmin;
+    /* margin: 0vmin 0; */
 }
 
 .scores {
@@ -19,7 +20,8 @@
     font-size: 5.5vmin;
 }
 
-.end-message {
+.end-message,
+#new-btn {
     font-size: 5vmin;
 }
 
@@ -34,6 +36,20 @@ button {
     font-size: 4vmin;
 }
 
+.github {
+    width: 5vmin;
+}
+
+.credits-btn {
+    width: 5vmin;
+    height: 5vmin;
+}
+
 .credits {
-    font-size: 2vmin;
+    width: 25vmin;
+    font-size: 1.7vmin;
+}
+
+.close {
+    font-size: 2.5vmin;
 }

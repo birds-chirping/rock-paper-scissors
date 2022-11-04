@@ -9,6 +9,9 @@ const endScreen = document.querySelector('.end-screen');
 const endMessage = document.querySelector('.end-message');
 const newGameBtn = document.querySelector('button');
 const playerButtons = document.querySelectorAll('.player-btn');
+const creditsBtn = document.querySelector('.credits-btn');
+const closeBtn = document.querySelector('.close');
+const credits = document.querySelector('.credits');
 let playerChoice;
 let compChoice;
 
@@ -136,5 +139,14 @@ function play() {
         roundMessage.classList.remove('visible'); //remove end round message
     }); 
 }
+
+creditsBtn.addEventListener('click', function() {
+    credits.classList.add('visible');
+})
+
+closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    credits.classList.remove('visible');
+})
 
 play();
