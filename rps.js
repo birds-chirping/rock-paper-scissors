@@ -142,11 +142,13 @@ function play() {
 
 creditsBtn.addEventListener('click', function() {
     credits.classList.add('visible');
+    creditsBtn.classList.add('shrink');
 })
 
 closeBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     credits.classList.remove('visible');
+    creditsBtn.classList.remove('shrink');
 })
 
 play();
