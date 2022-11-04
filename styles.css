@@ -264,7 +264,7 @@ button:focus {
 /* ----------------- C R E D I T S --------------------- */
 /* ----------------------------------------------------- */
 
-.footer {
+footer {
     flex: 1;
     width: 100%;
     display: flex;
@@ -279,6 +279,14 @@ button:focus {
 
 .github-icon {
     width: 8vmin;
+}
+
+.git:hover {
+    box-shadow: 0 0 1vmin rgba(225, 0, 255, 0.575);
+}
+
+.credits-btn-wrapper:hover {
+    box-shadow: 0 0 1vmin rgba(0, 195, 255, 0.575);
 }
 
 .git,
@@ -303,6 +311,7 @@ button:focus {
     border-radius: 50%; 
     position: relative;
 }
+
 
 .credits-btn {
     width: 8vmin;
