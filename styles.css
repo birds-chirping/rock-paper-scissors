@@ -15,6 +15,7 @@ body {
     display: flex;
     justify-content: center;
     font-family: 'Roboto', Verdana, Arial, Helvetica, sans-serif;
+    
 }
 
 a {
@@ -22,11 +23,11 @@ a {
 }
 
 a:link, a:visited {
-    color: rgba(225, 0, 255, 0.575);
+    color: rgba(0, 195, 255, 0.575);
 }
 
 a:hover, a:active {
-    color: rgba(0, 195, 255, 0.575);
+    color: rgba(225, 0, 255, 0.575);
 }
   
 /* ----------------------------------------------------- */
@@ -34,6 +35,11 @@ a:hover, a:active {
 /* ----------------------------------------------------- */
 
 .container {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-left {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,7 +60,7 @@ a:hover, a:active {
     color: rgba(200, 255, 0, 0.922);
     text-shadow: 1.1vmin 0px rgba(225, 0, 255, 0.575),
                  2vmin 0px rgba(0, 195, 255, 0.575);
-    margin-top: 2vmin;
+    margin-top: 4vmin;
 }
 
 
@@ -68,7 +74,7 @@ a:hover, a:active {
     display: flex;
     flex-direction: column;
     border-radius: 7px;
-    margin: 2vmin 0;
+    margin: 2vmin 0 0 -0.2vmin;
     background-image: url('./images/moon-bg.png');
     background-size: contain;
     background-position: bottom;
@@ -96,7 +102,9 @@ a:hover, a:active {
 .board {
     flex: 1;
     position: relative;
-    background: rgba(255, 255, 255, 0.400);
+    /* background: rgba(255, 255, 255, 0.400); */
+    background: linear-gradient(rgba(255, 255, 255, 0.400),
+                                rgba(255, 255, 255, 0.300));
 }
 
 .graphic {
@@ -204,9 +212,8 @@ a:hover, a:active {
     justify-content: center;
     min-height: 8vmin;
     position: relative;
-    background: linear-gradient(rgba(255, 255, 255, 0.400),
-                                /* rgba(255, 255, 255, 0.450), */
-                                rgba(255, 255, 255, 0.700));
+    background: linear-gradient(rgba(255, 255, 255, 0.300),
+                                rgba(255, 255, 255, 0.500));
 }
 
 .round-message {
@@ -299,9 +306,10 @@ footer {
     font-weight: 300;
     font-size: 3vmin;
     border-radius: 7px;
-    padding: 1%;
+    padding: 0.8vmin;
 }
 
+/* keeps space: */
 .credits-btn-container {
     display: flex;
     justify-content: flex-start;
@@ -348,11 +356,15 @@ footer {
 .close {
     line-height: 2vmin;
     align-self: flex-start;
-    color:rgba(225, 0, 255, 0.95);
+    color: rgba(0, 195, 255, 0.95);
     font-family: 'Fredoka One', cursive;
     font-size: 5vmin;
     text-shadow: 0.1vmin 0.1vmin 0.3vmin black;
     cursor: pointer;
+}
+
+.close:hover {
+    color:rgba(225, 0, 255, 0.95);
 }
 
 .source {

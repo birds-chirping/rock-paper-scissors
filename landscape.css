@@ -1,5 +1,9 @@
+
+
 .container {
+    flex-direction: row;
     max-width: 70vmin;
+    height: fit-content;
 }
 
 .title {
@@ -7,7 +11,7 @@
 }
 
 .game {
-    width: 70vmin;
+    width: 70.2vmin;
     min-height: 70vmin;
 }
 
@@ -55,6 +59,7 @@ button {
 }
 
 .close {
+    line-height: 0.7vmin;
     font-size: 2.5vmin;
 }
 
@@ -62,4 +67,14 @@ button {
     transition-duration: 0.1s;
     width: 1.2vmin;
     height: 1.2vmin;
+}
+
+.git {
+    margin: 3vmin 3vmin 4vmin 3vmin;
+}
+
+footer {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-start;
 }

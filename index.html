@@ -14,53 +14,50 @@
 
 <body>
   <div class="container">
-    <div class="title">
-      <div><h1>ROCK PAPER&nbsp;</h1><h1>SCISSORS&nbsp;</h1></div>
+
+    <div class="top-left">
+      <div class="title">
+        <div><h1>ROCK PAPER&nbsp;</h1><h1>SCISSORS&nbsp;</h1></div>
+      </div>
+      <div class="game">
+        <div class="scores">
+          <div>HUMAN &nbsp;<span id="player-score">0</span></div>
+          <div> <span id="comp-score">0</span>&nbsp; RABBIT</div>
+        </div>
+        <div class="board">
+          <div class="graphic">
+            <div class="human">
+              <img class="img-human" src="./images/human.png" alt="astronaut">
+            </div>
+            <div class="choices">
+              <div class="player-choice"></div>
+              <div class="comp-choice"></div>
+            </div>
+            <div class="comp">
+              <img class="img-comp" src="./images/rabbit.png" alt="rabbit">
+            </div>
+          </div>
+          <div class="end-screen">
+            <div class="end-mess-container">
+              <div class="end-message"></div>
+            </div>
+              <button id="new-btn">NEW GAME</button>
+          </div>
+        </div>
+        <div class="round-mess-container">
+          <div class="round-message">Round won</div>
+        </div>
+        <div class="player-buttons">
+          <button class="player-btn" id="rock">ROCK</button>
+          <button class="player-btn" id="paper">PAPER</button>
+          <button class="player-btn" id="scissors">SCISSORS</button>
+        </div>
+      </div>
     </div>
-
-    <div class="game">
-      <div class="scores">
-        <div>HUMAN &nbsp;<span id="player-score">0</span></div>
-        <div> <span id="comp-score">0</span>&nbsp; RABBIT</div>
-      </div>
-
-      <div class="board">
-
-        <div class="graphic">
-          <div class="human">
-            <img class="img-human" src="./images/human.png" alt="astronaut">
-          </div>
-          <div class="choices">
-            <div class="player-choice"></div>
-            <div class="comp-choice"></div>
-          </div>
-          <div class="comp">
-            <img class="img-comp" src="./images/rabbit.png" alt="rabbit">
-          </div>
-        </div>
-
-        <div class="end-screen">
-          <div class="end-mess-container">
-            <div class="end-message"></div>
-          </div>
-            <button id="new-btn">NEW GAME</button>
-        </div>
-      </div>
-
-      <div class="round-mess-container">
-        <div class="round-message">Round won</div>
-      </div>
-
-      <div class="player-buttons">
-        <button class="player-btn" id="rock">ROCK</button>
-        <button class="player-btn" id="paper">PAPER</button>
-        <button class="player-btn" id="scissors">SCISSORS</button>
-      </div>
-    </div>  
 
     <footer>
       <div class="git">
-        <a href="https://github.com/birds-chirping"><img class="github-icon" src="./images/gitlogo.png" alt="GitHub logo"></a>
+        <a href="https://github.com/birds-chirping/rock-paper-scissors"><img class="github-icon" src="./images/gitlogo.png" alt="GitHub logo"></a>
       </div>
       <div class="credits-btn-wrapper">
         <div class="credits-btn-container">
@@ -76,8 +73,8 @@
         </div>
       </div>
     </footer>
-
   </div>
+
   <script src="rps.js"></script>
 
 </body>
